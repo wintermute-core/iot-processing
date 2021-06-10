@@ -32,21 +32,18 @@ public class PressureSource {
 
     @PostConstruct
     void init() {
-        taskScheduler.schedule(new Runnable() {
-            @Override
-            public void run() {
-                MetricValue metricValue = MetricValue.builder()
-                        .correlationId(UUID.randomUUID().toString())
-                        .sourceId("pressure-sensor")
-                        .metricType("pressure")
-                        .metricName("pressure-1")
-                        .flow(defaultFlow)
-                        .build();
-                metricValue.setValue(new Random().nextDouble());
-                String firstTopic = metricValue.firstFlowItem();
-                log.info("Sending message to topic {}", firstTopic);
-                kafkaTemplate.send(firstTopic, new Date().toString(), metricValue);
-            }
+        taskScheduler.schedule(() -> {
+            MetricValue metricValue = MetricValue.builder()
+                    .correlationId(UUID.randomUUID().toString())
+                    .sourceId("pressure-sensor")
+                    .metricType("pressure")
+                    .metricName("pressure-1")
+                    .flow(defaultFlow)
+                    .build();
+            metricValue.setValue(new Random().nextDouble());
+            String firstTopic = metricValue.firstFlowItem();
+            log.info("Sending message to topic {} {}", firstTopic, metricValue.getCorrelationId());
+            kafkaTemplate.send(firstTopic, new Date().toString(), metricValue);
         }, new CronTrigger(sourceCron));
     }
 
