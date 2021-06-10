@@ -10,7 +10,7 @@ docker-compose up
 
 Kafka commands:
 
-Create topic
+Create topics
 ```
 kafka-topics --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1   --topic source-pressure
 kafka-topics --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1   --topic transform-kelvin-to-celsius
@@ -22,9 +22,13 @@ Start test consumer:
 kafka-console-consumer --bootstrap-server localhost:9092 --topic source-pressure
 ```
 
+Delete kafka topic
 ```
 kafka-topics --zookeeper zookeeper:2181 --delete --topic sink-db
 ```
+
+Access KafkaUI:
+http://localhost:7070
 
 ## Influx db
 
@@ -34,9 +38,7 @@ docker-compose up
 ```
 
 Access influx WebUI:
-```
 http://localhost:8086
-```
 
 Initial setup:
 ```
