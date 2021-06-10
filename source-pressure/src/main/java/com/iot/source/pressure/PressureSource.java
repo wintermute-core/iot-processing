@@ -1,7 +1,6 @@
 package com.iot.source.pressure;
 
 import com.iot.core.model.MetricValue;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -43,7 +42,7 @@ public class PressureSource {
             metricValue.setValue(new Random().nextDouble());
             String firstTopic = metricValue.firstFlowItem();
             log.info("Sending message to topic {} {}", firstTopic, metricValue.getCorrelationId());
-            kafkaTemplate.send(firstTopic, new Date().toString(), metricValue);
+            kafkaTemplate.send(firstTopic, UUID.randomUUID().toString(), metricValue);
         }, new CronTrigger(sourceCron));
     }
 

@@ -1,7 +1,6 @@
 package com.iot.source.fuel;
 
 import com.iot.core.model.MetricValue;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -44,7 +43,7 @@ public class FuelLevelSource {
             metricValue.setValue(new Random().nextInt(100));
             String firstTopic = metricValue.firstFlowItem();
             log.info("Sending message to topic {} {}", firstTopic, metricValue.getCorrelationId());
-            kafkaTemplate.send(firstTopic, new Date().toString(), metricValue);
+            kafkaTemplate.send(firstTopic, UUID.randomUUID().toString(), metricValue);
         }, new CronTrigger(sourceCron));
     }
 

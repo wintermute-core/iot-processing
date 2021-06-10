@@ -28,7 +28,7 @@ kafka-topics --zookeeper zookeeper:2181 --delete --topic sink-db
 ```
 
 Access KafkaUI:
-http://localhost:7070
+dfd
 
 ## Influx db
 

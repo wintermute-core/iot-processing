@@ -18,11 +18,13 @@ Project tech stack:
 
 ## Metrics query
 
+
 http://localhost:9777/swagger-ui.html
 
+Query single metric:
 ```
 
-curl -v localhost:9777/interval/1h/metric/pressure-sensor
+curl -v localhost:9777/metric/pressure-sensor/interval/1h
 
 {
   "min": 0.009788386689890127,
@@ -31,6 +33,55 @@ curl -v localhost:9777/interval/1h/metric/pressure-sensor
   "mean": 0.4767313862774201
 }
 
+```
+Aggregation request:
+```
+curl -X POST "http://localhost:9777/query" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"metrics\":{\"pressure-sensor\":[{\"function\":\"MIN\",\"interval\":\"1h\"},{\"function\":\"MAX\",\"interval\":\"1h\"}],\"fuel-level-sensor\":[{\"function\":\"MEAN\",\"interval\":\"1h\"}],\"temperature-kelvin-sensor\":[{\"function\":\"MEAN\",\"interval\":\"2h\"}]}}"
+
+Request:
+{
+  "metrics": {
+    "pressure-sensor": [
+      {
+        "function": "MIN",
+        "interval": "1h"
+      },
+      {
+        "function": "MAX",
+        "interval": "1h"
+      }
+    ],
+    "fuel-level-sensor": [
+      {
+        "function": "MEAN",
+        "interval": "1h"
+      }
+    ],
+    "temperature-kelvin-sensor": [
+      {
+        "function": "MEAN",
+        "interval": "2h"
+      }
+    ]
+  }
+}
+
+Response:
+
+{
+  "metrics": {
+    "pressure-sensor": {
+      "MIN": 0.005507284385931288,
+      "MAX": 0.9987821444161251
+    },
+    "temperature-kelvin-sensor": {
+      "MEAN": 4215.17083792702
+    },
+    "fuel-level-sensor": {
+      "MEAN": 50.61309523809524
+    }
+  }
+}
 ```
 
 # License

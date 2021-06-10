@@ -15,7 +15,7 @@ public class Listener {
 
     @KafkaListener(topics = "${sink.topic}", groupId = "${kafka.group}")
     public void listen(MetricValue metricValue) {
-        log.info("Handling message {}", metricValue.getCorrelationId());
+        log.info("Handling message {} of type {}", metricValue.getCorrelationId(), metricValue.getMetricType());
         try {
             metricSinkService.sink(metricValue);
         } catch (Exception e) {

@@ -1,8 +1,8 @@
 package com.iot.source.pressure;
 
 import com.iot.core.model.MetricValue;
-import java.util.Date;
 import java.util.Optional;
+import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,7 +43,7 @@ public class KelvinTransformListener {
                 log.warn("No next topic where to send message {}, dropping", metricValue.getCorrelationId());
                 return;
             }
-            kafkaTemplate.send(nextItem.get(), new Date().toString(), metricValue);
+            kafkaTemplate.send(nextItem.get(), UUID.randomUUID().toString(), metricValue);
         } catch (Exception e) {
             log.error("Failed to process metric value {}", metricValue, e);
         }
