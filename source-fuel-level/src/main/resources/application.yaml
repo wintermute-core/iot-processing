@@ -1,0 +1,9 @@
+server:
+  port: 9099
+
+kafka:
+  broker: "localhost:9092"
+
+source:
+  cron: "*/3 * * * * *"
+  flow: "sink-db"

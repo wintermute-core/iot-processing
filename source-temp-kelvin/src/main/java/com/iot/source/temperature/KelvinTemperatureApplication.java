@@ -1,4 +1,4 @@
-package com.iot.source.pressure;
+package com.iot.source.temperature;
 
 import com.iot.core.kafka.Producer;
 import com.iot.core.model.MetricValue;

@@ -10,11 +10,16 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+/**
+ * Transform Kelvin temperature to Celsius and pass message to next item in flow.
+ */
 @Component
 @Slf4j
 public class KelvinTransformListener {
 
     private static final double CELSIUS_TRANSFORM_CONSTANT = -273.15d;
+
+    private static final String ORIGINAL_VALUE = "kelvin_original_value";
 
     @Autowired
     private KafkaTemplate<String, MetricValue> kafkaTemplate;
@@ -31,6 +36,7 @@ public class KelvinTransformListener {
                 return;
             }
             double kelvinValue = Double.parseDouble(metricValue.readValue().get().toString());
+            metricValue.getPayload().put(ORIGINAL_VALUE, kelvinValue); // saving original value just for reference
             metricValue.setValue(kelvinValue + CELSIUS_TRANSFORM_CONSTANT);
             Optional<String> nextItem = metricValue.nextItem(listenTopic);
             if (nextItem.isEmpty()) {
