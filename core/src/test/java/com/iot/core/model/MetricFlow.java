@@ -16,8 +16,7 @@ class MetricFlow {
 
     @BeforeEach
     void init() {
-        metricValue = new MetricValue();
-        metricValue.setFlow(Arrays.asList("potato", "tomato", "carrot"));
+        metricValue = MetricValue.builder().flow(Arrays.asList("potato", "tomato", "carrot")).build();
     }
 
     @Test

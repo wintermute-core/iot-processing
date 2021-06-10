@@ -15,4 +15,7 @@ Project tech stack:
   * Docker
   * Kubernetes
   * Docker compose
-  
+
+# License
+
+Only for reference, distribution and/or commercial usage not allowed

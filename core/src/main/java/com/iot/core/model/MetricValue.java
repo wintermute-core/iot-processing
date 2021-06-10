@@ -1,18 +1,26 @@
 package com.iot.core.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Data class which represents one metric collected from IoT device
  */
 @Data
+@Builder
 public class MetricValue {
 
+    public static final String VALUE_KEY = "value";
+
     // version of value
-    private String version;
+    @Default
+    private String version = "1.0";
 
     // unique identifier of this value
     private String correlationId;
@@ -22,8 +30,8 @@ public class MetricValue {
     private String metricType;
     private String metricName;
 
-
-    private Map<String, Object> payload;
+    @Default
+    private Map<String, Object> payload = new HashMap<>();
 
     // list of processors/sink which this value should flow
     private List<String> flow;
@@ -43,6 +51,13 @@ public class MetricValue {
             }
         }
         return Optional.empty();
+    }
+
+    public Optional<Object> readValue() {
+        return Optional.ofNullable(payload.get(VALUE_KEY));
+    }
+    public void setValue(Object value) {
+        payload.put(VALUE_KEY, value);
     }
 
 }

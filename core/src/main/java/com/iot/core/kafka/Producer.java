@@ -1,14 +1,15 @@
 package com.iot.core.kafka;
 
+import com.iot.core.model.MetricValue;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.apache.kafka.connect.json.JsonSerializer;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 /**
  * Kafka producer configuration and access classes
@@ -18,7 +19,7 @@ public class Producer {
 
     private final String broker;
 
-    public ProducerFactory<String, String> producerFactory() {
+    public ProducerFactory<String, MetricValue> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigurations());
     }
 
@@ -32,7 +33,7 @@ public class Producer {
         return configurations;
     }
 
-    public KafkaTemplate<String, String> kafkaTemplate() {
+    public KafkaTemplate<String, MetricValue> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 
