@@ -10,15 +10,10 @@ Project tech stack:
 
 * Java 11
 * Spring boot
-* Lombok
 * Kafka
-* Influx
+* InfluxDb
 * Docker compose
 
-## Future work
-
-* Avoid 'loop' in messages processing by adding `age` field which will be incremented on each
-  operation, messages with high `age` value should be dropped;
 
 ## Metrics query
 
@@ -89,6 +84,11 @@ Response:
   }
 }
 ```
+
+## Future work
+
+* Avoid 'loop' in messages processing by adding `age` field which will be incremented on each
+  operation, messages with high `age` value should be dropped;
 
 # License
 
