@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: access-metrics
+  labels:
+    app: access-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: access-metrics
+  template:
+    metadata:
+      labels:
+        app: access-metrics
+    spec:
+      containers:
+        - name: access-metrics
+          image: denis256/access-metrics-query:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      volumes:
+        - name: config
+          configMap:
+            name: access-metrics-config
+            items:
+              - key: "application.yaml"
+                path: "application.yaml"

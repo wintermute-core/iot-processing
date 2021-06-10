@@ -85,6 +85,10 @@ Response:
 }
 ```
 
+# Container images building
+
+eval $(minikube docker-env)
+
 ## Future work
 
 * Avoid 'loop' in messages processing by adding `age` field which will be incremented on each
