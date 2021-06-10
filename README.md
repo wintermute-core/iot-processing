@@ -37,14 +37,7 @@ aggregated values for single metric or for multiple metrics over REST interface.
 
 ## Structure
 
-
-
-| Column 1 | Column 2 | Column 3 |
-| -------- | -------- | -------- |
-| Text     | Text     | Text     |
-
-
-| Item                        | Description |
+| Item                        | Description  |
 |-----------------------------|--------------|
 | core                        | Common code, Kafka access classes, model classes |
 | source-fuel-level           | Source application which generate fuel level metrics |
@@ -63,6 +56,8 @@ Notes:
 * scaling of transport layer is well known and documented
 * unit tests are based on JUnit 5 and Mockito
 
+![Influx UI](./docs/influx-ui.png)
+![Metrics Query](./docs/metrics-query.png)
 
 ## Metrics Query
 
