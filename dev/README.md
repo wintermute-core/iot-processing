@@ -31,3 +31,11 @@ Access influx WebUI:
 ```
 http://localhost:8086
 ```
+
+Initial setup:
+```
+      username: user
+      password: password
+      organization: org
+      bucket: bucket
+```

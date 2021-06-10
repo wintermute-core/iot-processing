@@ -6,13 +6,13 @@ Pipeline to ingest and query data from IoT devices
 
 ## Stack
 
- * Java 11
-
- * Kafka
-
- * Influx
- 
- * Docker
-
- * Kubernetes
-
+Project tech stack:
+  * Java 11 
+  * Spring boot
+  * Lombok
+  * Kafka
+  * Influx
+  * Docker
+  * Kubernetes
+  * Docker compose
+  
