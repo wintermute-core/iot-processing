@@ -1,0 +1,6 @@
+resources:
+  - deployment.yaml
+configMapGenerator:
+  - name: source-fuel-level-config
+    files:
+      - application.yaml

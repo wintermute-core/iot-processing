@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sink-db
+  labels:
+    app: sink-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sink-db
+  template:
+    metadata:
+      labels:
+        app: sink-db
+    spec:
+      containers:
+        - name: sink-db
+          image: denis256/sink-db:latest
+
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      hostAliases:
+        - ip: "10.10.10.119"
+          hostnames:
+            - "kafka"
+      volumes:
+        - name: config
+          configMap:
+            name: sink-db-config
+            items:
+              - key: "application.yaml"
+                path: "application.yaml"

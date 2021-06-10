@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+kafka:
+  broker: "10.10.10.119:9092"
+
+source:
+  cron: "*/2 * * * * *"
+  flow: "transform-kelvin-to-celsius,sink-db"

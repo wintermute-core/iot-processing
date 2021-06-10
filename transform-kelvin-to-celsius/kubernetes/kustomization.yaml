@@ -1,0 +1,6 @@
+resources:
+  - deployment.yaml
+configMapGenerator:
+  - name: transform-kelvin-to-celsius-config
+    files:
+      - application.yaml

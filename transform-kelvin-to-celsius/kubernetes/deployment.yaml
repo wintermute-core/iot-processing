@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transform-kelvin-to-celsius
+  labels:
+    app: transform-kelvin-to-celsius
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transform-kelvin-to-celsius
+  template:
+    metadata:
+      labels:
+        app: transform-kelvin-to-celsius
+    spec:
+      containers:
+        - name: transform-kelvin-to-celsius
+          image: denis256/transform-kelvin-to-celsius:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      hostAliases:
+        - ip: "10.10.10.119"
+          hostnames:
+            - "kafka"
+      volumes:
+        - name: config
+          configMap:
+            name: transform-kelvin-to-celsius-config
+            items:
+              - key: "application.yaml"
+                path: "application.yaml"

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: source-fuel-level
+  labels:
+    app: source-fuel-level
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: source-fuel-level
+  template:
+    metadata:
+      labels:
+        app: source-fuel-level
+    spec:
+      containers:
+        - name: source-fuel-level
+          image: denis256/source-fuel-level:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+      hostAliases:
+        - ip: "10.10.10.119"
+          hostnames:
+            - "kafka"
+      volumes:
+        - name: config
+          configMap:
+            name: source-fuel-level-config
+            items:
+              - key: "application.yaml"
+                path: "application.yaml"

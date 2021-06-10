@@ -1,0 +1,6 @@
+resources:
+  - deployment.yaml
+configMapGenerator:
+  - name: source-temp-kelvin-config
+    files:
+      - application.yaml

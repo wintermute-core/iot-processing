@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+kafka:
+  broker: "10.10.10.119:9092"
+  group: "sink-db"
+
+sink:
+  topic: "sink-db"
+
+influx:
+  host: "http://10.10.10.119:8086"
+  token: "4fObYZRn5drnSxlTQkad5gBN0Z6AXV3N16nqcSgh8orqi9hPnG805YfThwScRiwDIxdmNNTKPsMV3krhKtPX0Q=="
+  bucket: "metrics"
+  org: "org"
+

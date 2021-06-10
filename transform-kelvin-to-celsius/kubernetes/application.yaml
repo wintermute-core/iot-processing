@@ -1,0 +1,10 @@
+
+server:
+  port: 8080
+
+kafka:
+  broker: "10.10.10.119:9092"
+  group: "transform-kelvin-to-celsius"
+
+transform:
+  topic: "transform-kelvin-to-celsius"
