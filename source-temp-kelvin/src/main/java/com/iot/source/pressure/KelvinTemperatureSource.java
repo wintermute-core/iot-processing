@@ -40,7 +40,8 @@ public class KelvinTemperatureSource {
                     .metricName("kelvin-temperature-1")
                     .flow(defaultFlow)
                     .build();
-            metricValue.setValue(new Random().nextDouble());
+            // kelvin temperature 1000 - 10000
+            metricValue.setValue(1 + 1000 * new Random().nextInt(10));
             String firstTopic = metricValue.firstFlowItem();
             log.info("Sending message to topic {} {}", firstTopic, metricValue.getCorrelationId());
             kafkaTemplate.send(firstTopic, new Date().toString(), metricValue);
