@@ -11,7 +11,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 
 @SpringBootApplication
-public class SourcePressureApplication {
+public class KelvinTemperatureApplication {
 
     @Bean
     public Producer kafkaProducer(@Value("${kafka.broker}") String broker) {
@@ -34,7 +34,7 @@ public class SourcePressureApplication {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        SpringApplication.run(SourcePressureApplication.class, args);
+        SpringApplication.run(KelvinTemperatureApplication.class, args);
     }
 
 }

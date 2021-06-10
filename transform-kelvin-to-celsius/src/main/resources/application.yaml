@@ -1,0 +1,9 @@
+server:
+  port: 9094
+
+kafka:
+  broker: "localhost:9092"
+  group: "transform-kelvin-to-celsius"
+
+transform:
+  topic: "transform-kelvin-to-celsius"
