@@ -24,7 +24,7 @@ public class FuelSourceApplication {
     }
 
     @Bean
-    public ThreadPoolTaskScheduler threadPoolTaskScheduler(){
+    public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
         ThreadPoolTaskScheduler threadPoolTaskScheduler
                 = new ThreadPoolTaskScheduler();
         threadPoolTaskScheduler.setPoolSize(1);

@@ -1,8 +1,10 @@
-package com.iot.source.pressure;
+package com.iot.transform;
 
 import com.iot.core.model.MetricValue;
 import java.util.Optional;
 import java.util.UUID;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +27,8 @@ public class KelvinTransformListener {
     private KafkaTemplate<String, MetricValue> kafkaTemplate;
 
     @Value("${transform.topic}")
+    @Getter
+    @Setter
     private String listenTopic;
 
     @KafkaListener(topics = "${transform.topic}", groupId = "${kafka.group}")

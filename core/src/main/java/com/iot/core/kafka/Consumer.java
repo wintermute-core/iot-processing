@@ -26,7 +26,8 @@ public class Consumer {
         configurations.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, broker);
         configurations.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         configurations.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        configurations.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, org.springframework.kafka.support.serializer.JsonDeserializer.class);
+        configurations.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
+                org.springframework.kafka.support.serializer.JsonDeserializer.class);
         configurations.put("spring.json.trusted.packages", "*");
         configurations.put("spring.kafka.consumer.properties.spring.json.trusted.packages", "*");
 

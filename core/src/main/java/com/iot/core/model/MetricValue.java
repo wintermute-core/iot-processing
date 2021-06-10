@@ -59,6 +59,7 @@ public class MetricValue {
     public Optional<Object> readValue() {
         return Optional.ofNullable(payload.get(VALUE_KEY));
     }
+
     public void setValue(Object value) {
         payload.put(VALUE_KEY, value);
     }

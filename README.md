@@ -7,23 +7,25 @@ Pipeline to ingest and query data from IoT devices
 ## Stack
 
 Project tech stack:
-  * Java 11 
-  * Spring boot
-  * Lombok
-  * Kafka
-  * Influx
-  * Docker compose
+
+* Java 11
+* Spring boot
+* Lombok
+* Kafka
+* Influx
+* Docker compose
 
 ## Future work
 
- * Avoid 'loop' in messages processing by adding `age` field which will be incremented on each operation, 
-   messages with high `age` value should be dropped;
+* Avoid 'loop' in messages processing by adding `age` field which will be incremented on each
+  operation, messages with high `age` value should be dropped;
 
 ## Metrics query
 
 http://localhost:9777/swagger-ui.html
 
 Query single metric:
+
 ```
 
 curl -v localhost:9777/metric/pressure-sensor/interval/1h
@@ -36,7 +38,9 @@ curl -v localhost:9777/metric/pressure-sensor/interval/1h
 }
 
 ```
+
 Aggregation request:
+
 ```
 curl -X POST "http://localhost:9777/query" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"metrics\":{\"pressure-sensor\":[{\"function\":\"MIN\",\"interval\":\"1h\"},{\"function\":\"MAX\",\"interval\":\"1h\"}],\"fuel-level-sensor\":[{\"function\":\"MEAN\",\"interval\":\"1h\"}],\"temperature-kelvin-sensor\":[{\"function\":\"MEAN\",\"interval\":\"2h\"}]}}"
 

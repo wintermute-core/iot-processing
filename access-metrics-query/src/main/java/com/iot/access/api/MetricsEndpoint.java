@@ -34,10 +34,10 @@ public class MetricsEndpoint {
 
         aggregationRequest.getMetrics().entrySet().forEach(item -> {
             item.getValue().forEach(value -> {
-                aggregationResponse.addPair(item.getKey(), value.getFunction(), metricsQueryService.runAggregation(value.getFunction(), value.getInterval(), item.getKey()));
+                aggregationResponse.addPair(item.getKey(), value.getFunction(),
+                        metricsQueryService.runAggregation(value.getFunction(), value.getInterval(), item.getKey()));
             });
         });
-
 
         return aggregationResponse;
     }

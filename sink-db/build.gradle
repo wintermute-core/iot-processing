@@ -1,14 +1,14 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.0'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.5.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
 }
 
 dependencies {
-	implementation project(":core")
-	implementation 'org.apache.kafka:kafka-streams'
-	implementation 'org.springframework.kafka:spring-kafka'
-	implementation "com.influxdb:influxdb-client-java:2.0.0"
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation project(":core")
+    implementation 'org.apache.kafka:kafka-streams'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation "com.influxdb:influxdb-client-java:2.0.0"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

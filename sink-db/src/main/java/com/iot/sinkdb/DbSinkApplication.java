@@ -18,7 +18,8 @@ public class DbSinkApplication {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, MetricValue> kafkaListenerContainerFactory(Consumer consumer) {
+    public ConcurrentKafkaListenerContainerFactory<String, MetricValue> kafkaListenerContainerFactory(
+            Consumer consumer) {
         return consumer.kafkaListenerContainerFactory();
     }
 

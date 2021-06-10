@@ -1,4 +1,4 @@
-package com.iot.source.pressure;
+package com.iot.transform;
 
 import com.iot.core.kafka.Consumer;
 import com.iot.core.kafka.Producer;
@@ -31,12 +31,13 @@ public class KelvinToCelsiusApplication {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, MetricValue> kafkaListenerContainerFactory(Consumer consumer) {
+    public ConcurrentKafkaListenerContainerFactory<String, MetricValue> kafkaListenerContainerFactory(
+            Consumer consumer) {
         return consumer.kafkaListenerContainerFactory();
     }
 
     @Bean
-    public ThreadPoolTaskScheduler threadPoolTaskScheduler(){
+    public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
         ThreadPoolTaskScheduler threadPoolTaskScheduler
                 = new ThreadPoolTaskScheduler();
         threadPoolTaskScheduler.setPoolSize(1);
