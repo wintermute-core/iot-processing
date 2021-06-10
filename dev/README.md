@@ -12,7 +12,7 @@ Kafka commands:
 
 Create topic
 ```
-kafka-topics --create   --zookeeper zookeeper:2181   --replication-factor 1 --partitions 1   --topic myTopic
+kafka-topics --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1   --topic myTopic
 ```
 
 Start test consumer:
