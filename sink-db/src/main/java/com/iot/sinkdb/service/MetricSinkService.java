@@ -24,10 +24,6 @@ public class MetricSinkService {
     private String metricOrg;
 
     public void sink(MetricValue metricValue) {
-        if (metricValue.readValue().isEmpty()) {
-            log.warn("No value to persist in metric from {} {}", metricValue.getSourceId(), metricValue);
-            return;
-        }
         try (InfluxDBClient client = influxDbProvider.influxDBClient()) {
             String value = String.valueOf(metricValue.readValue().get());
             String data = String

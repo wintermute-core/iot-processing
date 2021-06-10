@@ -12,12 +12,14 @@ Project tech stack:
   * Lombok
   * Kafka
   * Influx
-  * Docker
-  * Kubernetes
   * Docker compose
 
-## Metrics query
+## Future work
 
+ * Avoid 'loop' in messages processing by adding `age` field which will be incremented on each operation, 
+   messages with high `age` value should be dropped;
+
+## Metrics query
 
 http://localhost:9777/swagger-ui.html
 

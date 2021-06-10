@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class Listener {
+public class QueueListener {
 
     @Autowired
     private MetricSinkService metricSinkService;
@@ -16,6 +16,10 @@ public class Listener {
     @KafkaListener(topics = "${sink.topic}", groupId = "${kafka.group}")
     public void listen(MetricValue metricValue) {
         log.info("Handling message {} of type {}", metricValue.getCorrelationId(), metricValue.getMetricType());
+        if (metricValue.readValue().isEmpty()) {
+            log.warn("No value to persist in metric from {} {}", metricValue.getSourceId(), metricValue);
+            return;
+        }
         try {
             metricSinkService.sink(metricValue);
         } catch (Exception e) {
