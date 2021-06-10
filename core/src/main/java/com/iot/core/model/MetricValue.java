@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Data;
@@ -14,6 +15,8 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class MetricValue {
 
     public static final String VALUE_KEY = "value";

@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
 	implementation project(":core")
+	implementation 'org.apache.kafka:kafka-streams'
+	implementation 'org.springframework.kafka:spring-kafka'
 	implementation "com.influxdb:influxdb-client-java:2.0.0"
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

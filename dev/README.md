@@ -22,6 +22,10 @@ Start test consumer:
 kafka-console-consumer --bootstrap-server localhost:9092 --topic source-pressure
 ```
 
+```
+kafka-topics --zookeeper zookeeper:2181 --delete --topic sink-db
+```
+
 ## Influx db
 
 ```

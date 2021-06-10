@@ -6,8 +6,8 @@ plugins {
 
 dependencies {
 	implementation project(":core")
-	implementation 'org.apache.kafka:kafka-streams'
-	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.apache.kafka:kafka-streams:2.7.1'
+	implementation 'org.springframework.kafka:spring-kafka:2.7.1'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

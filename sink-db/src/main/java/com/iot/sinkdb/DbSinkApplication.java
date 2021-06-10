@@ -1,14 +1,26 @@
 package com.iot.sinkdb;
 
+import com.iot.core.kafka.Consumer;
+import com.iot.core.model.MetricValue;
 import com.iot.sinkdb.service.InfluxDbProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 
 @SpringBootApplication
 public class DbSinkApplication {
 
+    @Bean
+    public Consumer consumer(@Value("${kafka.broker}") String broker, @Value("${kafka.group}") String groupId) {
+        return new Consumer(broker, groupId);
+    }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, MetricValue> kafkaListenerContainerFactory(Consumer consumer) {
+        return consumer.kafkaListenerContainerFactory();
+    }
 
     @Bean
     public InfluxDbProvider influxDbProvider(@Value("${influx.host}") String host,
@@ -18,30 +30,6 @@ public class DbSinkApplication {
 
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(DbSinkApplication.class, args);
-//
-//
-//		// You can generate a Token from the "Tokens Tab" in the UI
-//		String token = "jIfwboT-FAUbhln33zTyRt0AjTvGtE9JNxfMQ7fSX7mK5SR-wufTbChhyt1CbZ64uaxRCXhwvqi231hXOZQrSA==";
-//		String bucket = "bucket";
-//		String org = "user";
-//
-//		InfluxDBClient client = InfluxDBClientFactory.create("http://localhost:8086", token.toCharArray());
-////
-////		for(int i =0 ;i<100;i++) {
-////			String data = "mem,host=host1 used_percent=" + (10 + new Random().nextInt(5));
-////			try (WriteApi writeApi = client.getWriteApi()) {
-////				writeApi.writeRecord(bucket, org, WritePrecision.NS, data);
-////			}
-////			Thread.sleep(1000);
-////
-////		}
-//
-//		String query = String.format("from(bucket: \"%s\") |> range(start: -1h)", bucket);
-//		List<FluxTable> tables = client.getQueryApi().query(query, org);
-//		for(FluxTable fluxTable : tables) {
-//			System.out.println(fluxTable.getColumns() + "");
-//
-//		}
     }
 
 }

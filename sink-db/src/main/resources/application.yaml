@@ -1,7 +1,25 @@
+server:
+  port: 9666
+
+kafka:
+  broker: "localhost:9092"
+  group: "sink-db"
+
+sink:
+  topic: "sink-db"
 
 influx:
   host: "http://localhost:8086"
-  token: "jIfwboT-FAUbhln33zTyRt0AjTvGtE9JNxfMQ7fSX7mK5SR-wufTbChhyt1CbZ64uaxRCXhwvqi231hXOZQrSA=="
-  bucket: "bucket"
+  token: "4fObYZRn5drnSxlTQkad5gBN0Z6AXV3N16nqcSgh8orqi9hPnG805YfThwScRiwDIxdmNNTKPsMV3krhKtPX0Q=="
+  bucket: "metrics"
   org: "org"
 
+
+spring:
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"

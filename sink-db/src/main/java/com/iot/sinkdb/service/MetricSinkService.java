@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MetricSinkService {
 
-    private static final String VALUE_KEY = "value";
 
     @Autowired
     private InfluxDbProvider influxDbProvider;
@@ -24,12 +23,12 @@ public class MetricSinkService {
     private String metricOrg;
 
     public void sink(MetricValue metricValue) {
-        if (!metricValue.getPayload().containsKey(VALUE_KEY)) {
+        if (metricValue.readValue().isEmpty()) {
             log.warn("No value to persist in metric from {} {}", metricValue.getSourceId(), metricValue);
             return;
         }
         try (InfluxDBClient client = influxDbProvider.influxDBClient()) {
-            String value = String.valueOf(metricValue.getPayload().get(VALUE_KEY));
+            String value = String.valueOf(metricValue.readValue().get());
             String data = String
                     .format("source=%s %s=%s", metricValue.getSourceId(), metricValue.getMetricName(), value);
             try (WriteApi writeApi = client.getWriteApi()) {
