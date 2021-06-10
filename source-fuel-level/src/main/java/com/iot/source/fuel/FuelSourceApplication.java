@@ -29,7 +29,7 @@ public class FuelSourceApplication {
                 = new ThreadPoolTaskScheduler();
         threadPoolTaskScheduler.setPoolSize(1);
         threadPoolTaskScheduler.setThreadNamePrefix(
-                "kelvin-temperature");
+                "fuel-source");
         return threadPoolTaskScheduler;
     }
 
