@@ -1,8 +1,8 @@
 package com.iot.sinkdb;
 
+import com.iot.core.influx.InfluxDbProvider;
 import com.iot.core.kafka.Consumer;
 import com.iot.core.model.MetricValue;
-import com.iot.sinkdb.service.InfluxDbProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

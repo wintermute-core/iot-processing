@@ -1,10 +1,8 @@
-package com.iot.sinkdb.service;
+package com.iot.core.influx;
 
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 public class InfluxDbProvider {

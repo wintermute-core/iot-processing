@@ -14,3 +14,12 @@ influx:
   bucket: "metrics"
   org: "org"
 
+
+spring:
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
