@@ -6,3 +6,5 @@ include "source-pressure"
 
 include "transform-kelvin-to-celsius"
 
+include "access-metrics-query"
+
