@@ -178,4 +178,5 @@ Future improvements of solutions:
 
 # License
 
-Only for reference, distribution and/or commercial usage not allowed
+MIT
+
